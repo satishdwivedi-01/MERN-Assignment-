@@ -5,10 +5,9 @@ function App() {
   const [calories, setCalories] = useState("");
   const [entries, setEntries] = useState({});
   const [selectedDate, setSelectedDate] = useState(
-    new Date().toISOString().split("T")[0] // Default to today's date
+    new Date().toISOString().split("T")[0] 
   );
 
-  // Load entries from localStorage when the app starts
   useEffect(() => {
     const savedEntries = localStorage.getItem("calorieEntries");
     if (savedEntries) {
@@ -27,7 +26,7 @@ function App() {
 
     const newEntry = { food : food, calories: Number(calories) };
 
-    // Update entries
+  
     const updatedEntries = { ...entries };
     if (!updatedEntries[selectedDate]) {
       updatedEntries[selectedDate] = [];
@@ -35,7 +34,7 @@ function App() {
     updatedEntries[selectedDate].push(newEntry);
     setEntries(updatedEntries);
     localStorage.setItem("calorieEntries", JSON.stringify(updatedEntries));
-    // Clear inputs
+   
     setFood("");
     setCalories("");
   };
@@ -44,7 +43,7 @@ function App() {
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6">
       <h1 className="text-xl font-bold mb-4">Calorie Tracker</h1>
 
-      {/* Input Section */}
+     
       <div className="bg-white p-4 rounded shadow w-80 mb-6">
         <label className="block mb-2">Select Date:</label>
         <input
@@ -80,7 +79,7 @@ function App() {
         </button>
       </div>
 
-      {/* Display Section */}
+      
       <div className="bg-white p-4 rounded shadow w-80">
         <h2 className="text-lg font-bold mb-4">Entries for {selectedDate}</h2>
         {entries[selectedDate] && entries[selectedDate].length > 0 ? (
